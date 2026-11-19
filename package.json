@@ -1,0 +1,23 @@
+{
+  "name": "rabbitmq-node-learning",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A beginner-friendly, hands-on RabbitMQ course using Node.js",
+  "scripts": {
+    "rabbit:start": "docker compose up -d",
+    "rabbit:stop": "docker compose down",
+    "hello:receive": "node src/01-hello/receive.js",
+    "hello:send": "node src/01-hello/send.js",
+    "work:worker": "node src/02-work-queue/worker.js",
+    "work:send": "node src/02-work-queue/send-task.js",
+    "pubsub:receive": "node src/03-pub-sub/receive.js",
+    "pubsub:send": "node src/03-pub-sub/publish.js",
+    "check": "node --check src/01-hello/send.js && node --check src/01-hello/receive.js && node --check src/02-work-queue/send-task.js && node --check src/02-work-queue/worker.js && node --check src/03-pub-sub/publish.js && node --check src/03-pub-sub/receive.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "amqplib": "^2.2.0"
+  }
+}

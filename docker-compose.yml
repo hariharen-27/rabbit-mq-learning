@@ -1,0 +1,22 @@
+services:
+  rabbitmq:
+    image: rabbitmq:4.3-management
+    container_name: rabbitmq-learning
+    hostname: rabbitmq-learning
+    ports:
+      - "${RABBITMQ_PORT:-5673}:5672"
+      - "${RABBITMQ_MANAGEMENT_PORT:-15673}:15672"
+      - "8888:8888"
+    environment:
+      RABBITMQ_DEFAULT_USER: learner
+      RABBITMQ_DEFAULT_PASS: learner
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+volumes:
+  rabbitmq_data:
