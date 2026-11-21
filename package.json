@@ -12,7 +12,13 @@
     "work:send": "node src/02-work-queue/send-task.js",
     "pubsub:receive": "node src/03-pub-sub/receive.js",
     "pubsub:send": "node src/03-pub-sub/publish.js",
-    "check": "node --check src/01-hello/send.js && node --check src/01-hello/receive.js && node --check src/02-work-queue/send-task.js && node --check src/02-work-queue/worker.js && node --check src/03-pub-sub/publish.js && node --check src/03-pub-sub/receive.js"
+    "concurrency:publish": "node src/04-concurrency/publish-jobs.js",
+    "concurrency:worker": "node src/04-concurrency/worker.js",
+    "dlq:setup": "node src/05-retries-dlq/setup.js",
+    "dlq:publish": "node src/05-retries-dlq/publish-order.js",
+    "dlq:worker": "node src/05-retries-dlq/worker.js",
+    "dlq:inspect": "node src/05-retries-dlq/inspect-dlq.js",
+    "check": "node --check src/01-hello/send.js && node --check src/01-hello/receive.js && node --check src/02-work-queue/send-task.js && node --check src/02-work-queue/worker.js && node --check src/03-pub-sub/publish.js && node --check src/03-pub-sub/receive.js && node --check src/04-concurrency/publish-jobs.js && node --check src/04-concurrency/worker.js && node --check src/05-retries-dlq/setup.js && node --check src/05-retries-dlq/publish-order.js && node --check src/05-retries-dlq/worker.js && node --check src/05-retries-dlq/inspect-dlq.js"
   },
   "engines": {
     "node": ">=18"

@@ -1,7 +1,8 @@
 # Learn RabbitMQ with Node.js
 
-This small course teaches RabbitMQ by running real programs. Complete the three
-lessons in order; each one adds only one new idea.
+This small course teaches RabbitMQ by running real programs. Complete the five
+lessons in order; each one adds a focused idea and the final two model real-world
+worker behavior.
 
 Before starting RabbitMQ, read [Docker, Compose, and the port-conflict lesson](./DOCKER-AND-PORTS.md).
 It explains what Docker is, what `docker compose up` does, why the original start
@@ -14,7 +15,8 @@ failed, how we diagnosed it, and how host/container ports differ.
 3. Complete Lesson 1 and inspect the queue after every action.
 4. Complete Lesson 2 with two workers and observe acknowledgements.
 5. Complete Lesson 3 and compare a queue with an exchange.
-6. Do the practice challenges without copying the finished examples.
+6. Complete Lessons 4 and 5 in [Real-world RabbitMQ lessons](./REAL-WORLD-LESSONS.md).
+7. Do the practice challenges without copying the finished examples.
 
 ## The mental model
 
@@ -117,14 +119,23 @@ Both subscribers receive the same event because a `fanout` exchange copies it to
 every bound queue. Start subscribers before publishing: these queues are temporary,
 so events are not saved for subscribers that are offline.
 
+## Lessons 4 and 5: production-style workers
+
+Continue with [Real-world RabbitMQ lessons](./REAL-WORLD-LESSONS.md) to learn:
+
+- concurrency, prefetch, backpressure, throughput, and graceful draining;
+- transient versus permanent failures;
+- delayed bounded retries and dead-letter queues;
+- publisher confirms, at-least-once delivery, and idempotency.
+
 ## What to learn next
 
 Use this order rather than trying to learn every RabbitMQ feature at once:
 
 1. Routing keys with `direct` and `topic` exchanges.
-2. Dead-letter queues for failed messages.
-3. Retry design with a delay and a maximum attempt count.
-4. Publisher confirms, idempotent consumers, and duplicate handling.
+2. Quorum queues and their delivery limits.
+3. Multiple retry delays and exponential backoff.
+4. Transactional outbox and inbox patterns.
 5. Monitoring queue depth, processing rate, and unacknowledged messages.
 
 Important production rule: RabbitMQ delivery is commonly **at least once**. A
